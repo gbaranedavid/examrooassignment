@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "2r8iWGFXroneqQPQfIb/uMZjh5LiaEYwc4oMtDQ/AnP8dtLLAYW2E3UfZ6B8MY3IT4+hY3igKUwpTr9N90U4qA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Desktop\\developer kit\\dotNet and microservices\\dotnetprojects\\examroomecommerce\\microservices\\customerservice\\signupservice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\awssdk.core\\3.7.100.22\\awssdk.core.3.7.100.22.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.100.22\\awssdk.dynamodbv2.3.7.100.22.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\awssdk.s3\\3.7.101.22\\awssdk.s3.3.7.101.22.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.0\\microsoft.aspnetcore.openapi.7.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\mysqlconnector\\2.2.1\\mysqlconnector.2.2.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

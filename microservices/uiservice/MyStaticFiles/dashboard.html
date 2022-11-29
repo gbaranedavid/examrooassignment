@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="./dashboardstyle.css">
+
+</head>
+<body onload="loadCustomerFromCookie()">
+<!-- partial:index.partial.html -->
+<div class="main">
+  <div class="left">
+    <ul>
+      <li class="menu-heading">Dashboards</li>
+      <li><a data-toggle="tab" href="#overview"><i class="fa fa-home fa-lg"></i> Overview</a></li>
+      
+      <li class="active"><a data-toggle="tab" href="#user-profile"><i class="fa fa-street-view fa-lg"></i> User Profile</a></li>
+     
+      <li><a href="#"  onclick="signout()"><i class="fa fa-sign-out fa-lg"></i> Signout</a></li>
+    </ul>
+    <script>
+      function signout(){
+        window.location.replace('http://localhost:5013/ui/index.html');
+      }
+    </script>
+  </div>
+  <div class="right"> 
+    <div class="tab-content">
+      <!-- Overview -->
+      
+      <!-- User Profile -->
+      <div id="user-profile" class="tab-pane fade in active">
+        <div class="header">
+            <h4 id="headerText">User Profiless</h4>
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+                  <i class="fa fa-user-o dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <img src="https://bit.ly/2KkoqCO" class="img-circle img-responvie"/>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <img src="https://bit.ly/2MH8Wue" class="img-circle img-responvie"/>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <img src="https://bit.ly/2Km1kf6" class="img-circle img-responvie"/>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell-o dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-calendar fa-2x"></i>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-info-circle fa-2x"></i>
+                          <p class="pull-right">
+                            Someone mentioned you <br>
+                            <small>You have recieved a mention on twitter, check it out!</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="card-7">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="active"><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
+                </ul> 
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="activity">
+                    <ul>
+                      <small class="title">TODAY</small>
+                      <li>
+                        <h6>
+                          No activity available...
+                        </h6>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="col-sm-5">
+              <div class="card-5">
+                <div class="profile">
+                  <img src="https://bit.ly/2MoguT5" class="img-circle">
+                  <h4 id="customerNameVal">Sree
+                  </h4>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button class="btn btn-primary btn-block">Edit</button>
+                  </div>
+                </div><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>//
+      
+    </div>
+  </div>
+</div>
+<script>
+  function loadCustomerFromCookie(){
+    var customerFullName = document.cookie.split("; ")[1].split("+++")[1];
+    console.log(document.cookie);
+    document.getElementById("headerText").innerHTML = "Howdy "+customerFullName;
+    document.getElementById("customerNameVal").innerHTML = ""+customerFullName;
+  }
+</script>
+<!-- partial -->
+  <script src='./jquery.min.js'></script>
+<script src='./bootstrap.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

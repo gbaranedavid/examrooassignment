@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>Examroom shopping</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h3 style="margin-top: -3px;margin-bottom: 3px;">Create Account</h3>
+			<input type="text" placeholder="First name" id="customerFirstName" />
+			<input type="text" placeholder="Middle name" id="customerMiddleName"/>
+			<input type="text" placeholder="Last name" id="customerLastName"/>
+			<input type="text" placeholder="Mobile no" id="customerMobileNo"/>
+			<input type="email" placeholder="Email" id="customerEmail"/>
+			<input type="password" placeholder="Password" id="customerPassword"/>
+			<input type="password" placeholder="confirm password"id="customerConfirmPassword" />
+			<button onclick="signupClient()">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" id="loginEmail" placeholder="Email" />
+			<input type="password" id="loginPassword" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button onclick="loginClient()">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>Enter your personal details and start journey with us or signin if you already have an account</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>To keep connected with us please login with your personal info or signup.</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="growl-notice"></div>
+
+	<script>
+		async function signupClient(){
+			const customerFirstNameTxt= document.getElementById('customerFirstName').value;
+		    const customerLastNameTxt= document.getElementById('customerLastName').value;
+			const customerMiddleNameTxt= document.getElementById('customerMiddleName').value;
+			const customerGenderTxt= "none";
+			const customerCountryOfOriginTxt= "none";
+			const customerEmailTxt= document.getElementById('customerEmail').value;
+			const customerPasswordTxt= document.getElementById('customerPassword').value;
+			const customerConfirmPasswordTxt= document.getElementById('customerConfirmPassword').value;
+			const customerOtherInfoTxt= "none";
+			const customerMobileNoTxt= document.getElementById('customerMobileNo').value;
+
+			if(customerPasswordTxt===customerConfirmPasswordTxt){
+				const uri = 'http://localhost:5150/api/v1/CustomerDetails';
+
+				const customerJSONObject = {
+					customerFirstName: customerFirstNameTxt,
+					customerLastName: customerLastNameTxt,
+					customerMiddleName: customerMiddleNameTxt,
+					customerGender: customerGenderTxt,
+					customerCountryOfOrigin: customerCountryOfOriginTxt,
+					customerEmail: customerEmailTxt,
+					customerPassword: customerPasswordTxt,
+					customerOtherInfo: customerOtherInfoTxt,
+					customerMobileNo: customerMobileNoTxt
+				};
+				const requestOptions = {
+					method: 'POST',
+					headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(customerJSONObject)
+				}
+				const response = await fetch(uri, requestOptions);
+				if(response.status===200){
+					const data = await response.json();
+					$(".growl-notice").css("background-color", "#37a24ecc");
+					displayGrowl('Signup successful!','successsignup');
+					document.getElementById('signIn').click();
+				}else{
+					$(".growl-notice").css("background-color", "#e74c3c");
+					displayGrowl('Sorry, username or password not found',"error");
+					console.log("Data not found");
+				}
+			}else{
+				$(".growl-notice").css("background-color", "#e74c3c");
+					displayGrowl('Sorry password and confirm password does not match',"error");
+			}
+
+			
+			
+		}
+		async function loginClient(){
+			const loginEmail = document.getElementById('loginEmail').value;
+			const loginPassword = document.getElementById('loginPassword').value;
+			const uri = 'http://localhost:5150/api/v1/CustomerDetails/login';
+
+			const customerJSONObject = {
+				customerFirstName: "none",
+				customerLastName: "none",
+				customerMiddleName: "none",
+				customerGender: "none",
+				customerCountryOfOrigin: "none",
+				customerEmail: ""+loginEmail,
+				customerPassword: ""+loginPassword,
+				customerOtherInfo: "none",
+				customerMobileNo: "none"
+			};
+			const requestOptions = {
+				method: 'PUT',
+				headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(customerJSONObject)
+			}
+			const response = await fetch(uri, requestOptions);
+			if(response.status===200){
+				const data = await response.json();
+				var clientFullName = data.customerFirstName+" "+data.customerMiddleName+" "+data.customerLastName;
+				console.log(clientFullName);
+				document.cookie = "customerinfo="+data.customerEmail+"+++"+clientFullName;
+				$(".growl-notice").css("background-color", "#37a24ecc");
+				displayGrowl('Login successful!','success');
+			}else{
+				$(".growl-notice").css("background-color", "#e74c3c");
+				displayGrowl('Sorry, username or password not found',"error");
+				console.log("Data not found");
+			}
+			
+		}
+		function displayGrowl(message,status) {
+			$('.growl-notice').fadeIn().html(message);
+			setTimeout(function(){ 
+			$('.growl-notice').fadeOut();
+			}, 2000);
+			if(status==='success'){
+				window.location.replace('http://localhost:5013/ui/dashboard.html?');
+			}
+		}
+	</script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  <script  src="./jquery.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "TableName": "CustomerRecords",
+    "KeySchema": [
+      { "AttributeName": "customerEmail", "KeyType": "HASH" },
+      { "AttributeName": "customerPassword", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "customerEmail", "AttributeType": "S"},
+      { "AttributeName": "customerPassword", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}
+

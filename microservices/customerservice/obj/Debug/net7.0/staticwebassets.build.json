@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dJHUvQBMMR1MzJxVe35JmAB9nUeadYR3DJBQbI5hMM8=",
+  "Source": "signupservice",
+  "BasePath": "_content/signupservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
